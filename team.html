@@ -245,15 +245,33 @@
 
 
 @media (max-width:560px) {
-
   .efc-team { --fs-section:22px; --fs-name:18px; }
 
-  .efc-team .grid { grid-template-columns:1fr; }
+  /* Each section becomes a side-scrolling rail */
+  .efc-team .grid {
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    align-items:flex-start;
+    /* bleed to screen edges, then re-inset the cards */
+    margin:0 -22px;
+    padding:2px 22px 14px;
+    scrollbar-width:thin;
+    overscroll-behavior-x:contain;
+  }
+  .efc-team .grid::-webkit-scrollbar { height:6px; }
+  .efc-team .grid::-webkit-scrollbar-thumb { background:var(--border); border-radius:6px; }
+  .efc-team .card {
+    flex:0 0 85%;
+    scroll-snap-align:start;
+  }
+  /* stop the hover-lift from fighting touch scroll */
+  .efc-team .card:hover { transform:none; }
 
   .efc-team .controls-inner { flex-direction:column; align-items:stretch; }
-
   .efc-team .search input { width:100%; max-width:100%; }
-
 }
 
 @media (prefers-reduced-motion:reduce) {
