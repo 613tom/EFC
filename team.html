@@ -1707,5 +1707,19 @@
   apply();
 })();
 </script>
+<script>
+  function sendHeightToParent() {
+    var height = document.body.scrollHeight || document.documentElement.scrollHeight;
+    window.parent.postMessage({ type: 'SET_CALENDAR_HEIGHT', height: height }, '*');
+  }
+
+  window.addEventListener('load', sendHeightToParent);
+  window.addEventListener('resize', sendHeightToParent);
+
+  // Automatically recalculates height if the calendar elements expand/collapse
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeightToParent).observe(document.body);
+  }
+</script>
 </body>
 </html>
