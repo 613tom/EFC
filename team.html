@@ -1,291 +1,3422 @@
+ <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>EFC Instructor Cadre</title>
+
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap');
 
+
+
 .efc-team {
+
   /* Brand */
+
   --accent:#F69D24; --accent-ink:#141414;
+
   /* Dark surfaces */
+
   --bg:#141414; --surface:#1b1b1b; --surface-2:#242424;
+
   --border:#2e2e2e; --hair:#262626;
+
   /* Text on dark */
+
   --heading:#ffffff; --text:#d7d7d7; --muted:#9a9a9a;
-  /* Type scale */
-  --fs-section:28px;
-  --fs-name:20px;
-  --fs-role:13px;
-  --fs-body:15px;
-  --fs-chip:13px;
-  --fs-label:15px;
-  --fs-count:13px;
+
+  /* Type scale — mapped to the LearnWorlds site scale */
+
+  --fs-section:28px;   /* Heading · H3 normal */
+
+  --fs-name:20px;      /* Heading · H2 small  */
+
+  --fs-role:13px;      /* Main · Very small   */
+
+  --fs-body:15px;      /* Main · Small text   */
+
+  --fs-chip:13px;      /* Main · Very small   */
+
+  --fs-label:15px;     /* Main · Small text   */
+
+  --fs-count:13px;     /* Main · Very small   */
+
   --radius:15px; --efc-top:0px;
+
   font-family:'Montserrat',system-ui,sans-serif; color:var(--text);
+
   line-height:1.55; -webkit-font-smoothing:antialiased; background:var(--bg);
-  border-radius: var(--radius);
-  padding-bottom: 20px;
+
 }
+
 .efc-team *,.efc-team *::before,.efc-team *::after { box-sizing:border-box; }
+
 .efc-team .wrap { max-width:1120px; margin:0 auto; padding:0 22px; }
 
+
+
 /* ---------- Find bar ---------- */
+
 .efc-team .controls {
+
   position:sticky; top:var(--efc-top); z-index:20; background:var(--surface);
+
   border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:16px 0;
+
 }
+
 .efc-team .controls-inner { display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between; }
+
 .efc-team .find-label { margin:0; font-size:var(--fs-label); color:var(--muted); }
+
 .efc-team .search { position:relative; }
+
 .efc-team .search input {
+
   font-family:'Montserrat',sans-serif; font-size:var(--fs-label); width:250px; max-width:56vw;
+
   padding:10px 14px 10px 38px; border:1px solid var(--border); border-radius:var(--radius);
+
   background:var(--surface-2); color:var(--heading);
+
 }
+
 .efc-team .search input::placeholder { color:var(--muted); }
+
 .efc-team .search input:focus { outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent); }
+
 .efc-team .search svg { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--muted); }
+
 .efc-team .count { font-family:'Montserrat',sans-serif; font-size:var(--fs-count); font-weight:600; letter-spacing:.02em; color:var(--muted); padding:10px 0 0; }
 
+
+
 /* ---------- Sections ---------- */
+
 .efc-team main { padding:44px 0 30px; }
+
 .efc-team .tier-group { margin-bottom:56px; }
+
 .efc-team .tier-head { margin-bottom:24px; }
+
 .efc-team .tier-head::before { content:""; display:block; width:40px; height:3px; background:var(--accent); margin-bottom:16px; }
+
 .efc-team .tier-head h2 {
+
   font-family:'Libre Baskerville',Georgia,serif; font-weight:700; font-size:var(--fs-section);
+
   margin:0; color:var(--heading); display:flex; align-items:baseline; gap:12px;
+
 }
+
 .efc-team .tier-n { font-family:'Montserrat',sans-serif; font-size:var(--fs-count); font-weight:600; color:var(--accent); letter-spacing:.02em; }
+
 .efc-team .tier-n::before { content:"— "; color:var(--muted); }
+
 .efc-team .tier-head p { margin:8px 0 0; color:var(--muted); font-size:var(--fs-body); }
+
 .efc-team .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px; }
 
+
+
 /* ---------- Card ---------- */
+
 .efc-team .card {
+
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+
   padding:20px; position:relative; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+
 }
+
 .efc-team .card::before {
+
   content:""; position:absolute; left:0; top:18px; bottom:18px; width:3px;
+
   background:var(--accent); border-radius:3px; opacity:0; transition:opacity .18s ease;
+
 }
+
 .efc-team .card:hover { transform:translateY(-3px); box-shadow:0 16px 34px -18px rgba(0,0,0,.8); border-color:#3d3d3d; }
+
 .efc-team .card:hover::before { opacity:1; }
+
 .efc-team .card-head { display:flex; gap:14px; align-items:center; margin-bottom:14px; }
+
 .efc-team .avatar {
+
   width:56px; height:56px; flex:0 0 56px; border-radius:var(--radius); object-fit:cover;
+
   display:flex; align-items:center; justify-content:center;
+
   font-family:'Libre Baskerville',serif; font-weight:700; font-size:20px;
+
   color:var(--accent); background:var(--surface-2); border:1px solid var(--border);
+
 }
+
 .efc-team .name { font-family:'Libre Baskerville',Georgia,serif; font-weight:700; font-size:var(--fs-name); margin:0; color:var(--heading); line-height:1.2; }
+
 .efc-team .role { font-family:'Montserrat',sans-serif; font-weight:600; font-size:var(--fs-role); letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin:6px 0 0; }
+
 .efc-team .chips { list-style:none; padding:0; margin:0 0 14px; display:flex; flex-wrap:wrap; gap:6px; }
+
 .efc-team .chip { font-family:'Montserrat',sans-serif; font-size:var(--fs-chip); font-weight:500; color:var(--muted); background:var(--surface-2); border:1px solid var(--border); padding:3px 9px; border-radius:4px; transition:border-color .18s ease, color .18s ease; }
+
 .efc-team .card:hover .chip { border-color:#4a3c22; color:#c9c9c9; }
+
 .efc-team .creds { list-style:none; padding:0; margin:0; }
+
 .efc-team .creds li { position:relative; padding:6px 0 6px 18px; font-size:var(--fs-body); color:var(--text); border-top:1px solid var(--hair); }
+
 .efc-team .creds li:first-child { border-top:0; }
+
 .efc-team .creds li::before { content:""; position:absolute; left:2px; top:13px; width:6px; height:6px; background:var(--accent); transform:rotate(45deg); }
+
 .efc-team .creds-rest[hidden] { display:none; }
+
 .efc-team .more {
+
   margin-top:12px; font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:.06em;
+
   font-size:var(--fs-role); font-weight:600; color:var(--heading); background:none; border:0; cursor:pointer;
+
   padding:6px 0 4px; display:inline-flex; align-items:center; gap:7px; border-bottom:2px solid transparent;
+
 }
+
 .efc-team .more:hover { border-bottom-color:var(--accent); }
+
 .efc-team .more-n { color:var(--accent); font-weight:700; }
+
 .efc-team .more-close { display:none; }
+
 .efc-team .more[aria-expanded="true"] .more-open { display:none; }
+
 .efc-team .more[aria-expanded="true"] .more-close { display:inline; }
 
+
+
 /* ---------- Empty state ---------- */
+
 .efc-team .empty { display:none; text-align:center; padding:60px 20px; color:var(--muted); }
+
 .efc-team .empty.show { display:block; }
+
 .efc-team .empty h2 { font-family:'Libre Baskerville',serif; color:var(--heading); margin:0 0 6px; }
+
 .efc-team .empty button { margin-top:14px; font-family:'Montserrat',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.06em; font-size:var(--fs-role); padding:11px 20px; border:0; background:var(--accent); color:var(--accent-ink); border-radius:var(--radius); cursor:pointer; }
+
 .efc-team .empty button:hover { filter:brightness(1.06); }
 
+
+
 /* ---------- Back to top ---------- */
+
 .efc-team .to-top {
+
   position:fixed; right:22px; bottom:22px; z-index:30; width:46px; height:46px; border-radius:50%;
+
   border:0; background:var(--accent); color:var(--accent-ink); cursor:pointer;
+
   display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none;
+
   transition:opacity .2s ease, transform .2s ease, filter .18s ease; transform:translateY(8px);
+
   box-shadow:0 8px 22px -6px rgba(0,0,0,.7);
+
 }
+
 .efc-team .to-top.show { opacity:1; pointer-events:auto; transform:translateY(0); }
+
 .efc-team .to-top:hover { filter:brightness(1.08); }
+
+
 
 .efc-team .is-hidden { display:none !important; }
 
+
+
 @media (max-width:560px) {
+
   .efc-team { --fs-section:22px; --fs-name:18px; }
+
   .efc-team .grid { grid-template-columns:1fr; }
+
   .efc-team .controls-inner { flex-direction:column; align-items:stretch; }
+
   .efc-team .search input { width:100%; max-width:100%; }
+
 }
+
 @media (prefers-reduced-motion:reduce) {
+
   .efc-team * { transition:none !important; }
+
 }
+
 </style>
 
+</head>
+
+<body>
+
 <div class="efc-team">
+
+
+
   <div class="controls">
+
     <div class="wrap">
+
       <div class="controls-inner">
+
         <p class="find-label">Meet the full cadre — scroll to explore, or find someone specific:</p>
+
         <div class="search">
+
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+
           <label class="is-hidden" for="efc-search">Find an instructor</label>
+
           <input id="efc-search" type="search" placeholder="Name, skill, or agency…" autocomplete="off">
+
         </div>
+
       </div>
+
       <p class="count" id="efc-count" aria-live="polite"></p>
+
     </div>
+
   </div>
 
+
+
   <main>
+
     <div class="wrap">
-      <section class="tier-group" data-group="leadership">
-        <div class="tier-head">
-          <h2>Leadership <span class="tier-n">4</span></h2>
-          <p>The director, assistant director, and full-time lead instructors of the combatives program.</p>
+
+    <section class="tier-group" data-group="leadership">
+
+      <div class="tier-head">
+
+        <h2>Leadership <span class="tier-n">4</span></h2>
+
+        <p>The director, assistant director, and full-time lead instructors of the combatives program.</p>
+
+      </div>
+
+      <div class="grid">
+
+      <article class="card t-leadership t-founders" data-tiers="leadership founders" data-search="jay wadsworth director of combatives · head instructor brazilian jiu-jitsu – 3rd degree black belt retired pro/amateur mma fighter 22 years of street cop experience 14 years swat experience nys dcjs certified swat operator (2021) dcjs instructor: developed the mandatory curriculum for defensive tactics instructors and basic recruits; lead instructor on 18+ two-day recertification courses, 24 80-hour instructor courses, and 4 one-day overview courses (2016–present) sme, city of syracuse case (2019) sme, nys ag&#x27;s officer grand jury testimony (2020) reality based training instructor, dcjs (2019) range instructor, dcjs (2019) progressive force concepts / code 4 concepts defensive tactics instructor (2016–2022) jamestown police department swat team director of training (2015–2023) team leader, jamestown police swat team (2011–2023) head defensive tactics instructor, chautauqua county sheriff&#x27;s academy (2012–2023) director of defensive tactics @ nytoa (2016–present) instructor at nytoa (2013–present) instructor at tacops east/south (2016–present) jamestown police department lead defensive tactics instructor (2010–2023) defensive tactics instructor certification, dcjs (2010) taser instructor (2010–2016) brazilian jiu-jitsu swat / tactical firearms defensive tactics mma taser / less-lethal">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/59c691d94096989df5f715814e77e422.png" alt="Jay Wadsworth, Director of Combatives · Head Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Jay Wadsworth</h3>
+
+            <p class="role">Director of Combatives · Head Instructor</p>
+
+          </div>
+
         </div>
-        <div class="grid">
-          <article class="card t-leadership t-founders" data-tiers="leadership founders" data-search="jay wadsworth director of combatives · head instructor brazilian jiu-jitsu – 3rd degree black belt retired pro/amateur mma fighter 22 years of street cop experience 14 years swat experience nys dcjs certified swat operator (2021) dcjs instructor: developed the mandatory curriculum for defensive tactics instructors and basic recruits; lead instructor on 18+ two-day recertification courses, 24 80-hour instructor courses, and 4 one-day overview courses (2016–present) sme, city of syracuse case (2019) sme, nys ag's officer grand jury testimony (2020) reality based training instructor, dcjs (2019) range instructor, dcjs (2019) progressive force concepts / code 4 concepts defensive tactics instructor (2016–2022) jamestown police department swat team director of training (2015–2023) team leader, jamestown police swat team (2011–2023) head defensive tactics instructor, chautauqua county sheriff's academy (2012–2023) director of defensive tactics @ nytoa (2016–present) instructor at nytoa (2013–present) instructor at tacops east/south (2016–present) jamestown police department lead defensive tactics instructor (2010–2023) defensive tactics instructor certification, dcjs (2010) taser instructor (2010–2016) brazilian jiu-jitsu swat / tactical firearms defensive tactics mma taser / less-lethal">
-            <div class="card-head">
-              <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/59c691d94096989df5f715814e77e422.png" alt="Jay Wadsworth" loading="lazy" decoding="async" width="56" height="56">
-              <div class="who">
-                <h3 class="name">Jay Wadsworth</h3>
-                <p class="role">Director of Combatives · Head Instructor</p>
-              </div>
-            </div>
-            <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
-            <ul class="creds"><li>Brazilian Jiu-Jitsu – 3rd Degree Black Belt</li><li>Retired Pro/Amateur MMA fighter</li><li>22 years of street cop experience</li></ul>
-            <ul class="creds creds-rest" id="rest-jay-wadsworth" hidden><li>14 years SWAT experience</li><li>NYS DCJS Certified SWAT Operator (2021)</li><li>DCJS Instructor: developed mandatory curriculum...</li><li>SME, City of Syracuse case (2019)</li><li>SME, NYS AG's officer grand jury testimony (2020)</li><li>Reality Based Training Instructor, DCJS (2019)</li><li>Range Instructor, DCJS (2019)</li><li>Progressive FORCE Concepts / Code 4 Concepts DT Instructor (2016–2022)</li><li>Jamestown Police Dept SWAT Director of Training (2015–2023)</li><li>Team Leader, Jamestown Police SWAT Team (2011–2023)</li><li>Head DT Instructor, Chautauqua County Sheriff's Academy (2012–2023)</li><li>Director of Defensive Tactics @ NYTOA (2016–Present)</li><li>Instructor at NYTOA (2013–Present)</li><li>Instructor at TacOps East/South (2016–Present)</li><li>Jamestown Police Dept Lead DT Instructor (2010–2023)</li><li>Defensive Tactics Instructor Certification, DCJS (2010)</li><li>Taser Instructor (2010–2016)</li></ul>
-            <button class="more" type="button" aria-expanded="false" aria-controls="rest-jay-wadsworth">
-              <span class="more-open">View full record <span class="more-n">+17</span></span>
-              <span class="more-close">Show less</span>
-            </button>
-          </article>
-          <article class="card t-leadership" data-tiers="leadership" data-search="scott st. clair assistant director · head instructor 13+ years of law enforcement experience brazilian jiu-jitsu black belt 11+ years swat team member regional swat team leader police sergeant nc tactical training certification (ncja) nc firearms instructor (ncja) nc subject control instructor (ncja) force on force instructor special operations combatives (socp) instructor gst level 2 instructor degree in criminal justice adjunct instructor, wake technical community college marine corps veteran brazilian jiu-jitsu swat / tactical firearms defensive tactics military">
-            <div class="card-head">
-              <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/a2ab820fd3c90266ca7d0343ebd9ef0d.png" alt="Scott St. Clair" loading="lazy" decoding="async" width="56" height="56">
-              <div class="who">
-                <h3 class="name">Scott St. Clair</h3>
-                <p class="role">Assistant Director · Head Instructor</p>
-              </div>
-            </div>
-            <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
-            <ul class="creds"><li>13+ years of law enforcement experience</li><li>Brazilian Jiu-Jitsu Black Belt</li><li>11+ years SWAT Team member</li></ul>
-            <ul class="creds creds-rest" id="rest-scott-st-clair" hidden><li>Regional SWAT Team Leader</li><li>Police Sergeant</li><li>NC Tactical Training Certification (NCJA)</li><li>NC Firearms Instructor (NCJA)</li><li>NC Subject Control Instructor (NCJA)</li><li>Force on Force Instructor</li><li>Special Operations Combatives (SOCP) Instructor</li><li>GST Level 2 Instructor</li><li>Degree in Criminal Justice</li><li>Adjunct Instructor, Wake Technical Community College</li><li>Marine Corps Veteran</li></ul>
-            <button class="more" type="button" aria-expanded="false" aria-controls="rest-scott-st-clair">
-              <span class="more-open">View full record <span class="more-n">+11</span></span>
-              <span class="more-close">Show less</span>
-            </button>
-          </article>
-          <article class="card t-leadership" data-tiers="leadership" data-search="matt greene full-time lead instructor effective fitness coach nsca certified strength and conditioning specialist nsca tactical strength and conditioning facilitator us army holistic health & fitness coordinator st. louis metropolitan police department (6 years of service) active us army national guard recon scout/sniper – hhc 1-138th 2x crossfit games semifinalist (2021/2023) 4x crossfit games regionals (2015–2017) black belt in brazilian jiu-jitsu ibjjf world champion 2x ibjjf masters world champion 2x ibjjf pan am champion 4x ibjjf pan am medalist collegiate ncwa all-american honors – lu wrestling 2013 ncaa dii miaa conference championships – 3rd place 3x ncaa open podium finisher – lu wrestling former amateur mma fighter brazilian jiu-jitsu swat / tactical firearms mma wrestling military">
-            <div class="card-head">
-              <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/6853c51bdb5e55d870c05ed8e1466b75.png" alt="Matt Greene" loading="lazy" decoding="async" width="56" height="56">
-              <div class="who">
-                <h3 class="name">Matt Greene</h3>
-                <p class="role">Full-Time Lead Instructor</p>
-              </div>
-            </div>
-            <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">MMA</li></ul>
-            <ul class="creds"><li>Effective Fitness Coach</li><li>NSCA Certified Strength & Conditioning Specialist</li><li>NSCA Tactical Strength & Conditioning Facilitator</li></ul>
-            <ul class="creds creds-rest" id="rest-matt-greene" hidden><li>US Army Holistic Health & Fitness Coordinator</li><li>St. Louis Metropolitan Police Dept (6 years)</li><li>Active US Army National Guard Recon Scout/Sniper</li><li>2x CrossFit Games Semifinalist</li><li>4x CrossFit Games Regionals</li><li>Black Belt in Brazilian Jiu-Jitsu</li><li>IBJJF World Champion</li><li>2x IBJJF Masters World Champion</li><li>2x IBJJF Pan Am Champion</li><li>4x IBJJF Pan Am Medalist</li><li>Collegiate NCWA All-American Honors</li><li>NCAA DII MIAA Conference Championships – 3rd Place</li><li>3x NCAA Open Podium Finisher</li><li>Former Amateur MMA Fighter</li></ul>
-            <button class="more" type="button" aria-expanded="false" aria-controls="rest-matt-greene">
-              <span class="more-open">View full record <span class="more-n">+14</span></span>
-              <span class="more-close">Show less</span>
-            </button>
-          </article>
-          <article class="card t-leadership" data-tiers="leadership" data-search="dylan royce full-time lead instructor b.s. in exercise & sports science 11+ years of law enforcement experience – active-duty police officer brazilian jiu-jitsu black belt – 2nd degree ibjjf no-gi world medalist (black belt) ibjjf no-gi pan american & american nationals medalist ibjjf new york open medalist ibjjf miami, new orleans, atlanta, and denver open medalist (10x) superfight winner – fight to win pro heroes on the mat 180 lb title holder former title challenger – fight to win pro head brazilian jiu-jitsu coach, precision jiu-jitsu head brazilian jiu-jitsu coach, marquez mma specializes in no-gi grappling, competition prep, and le-specific applications of brazilian jiu-jitsu brazilian jiu-jitsu mma">
-            <div class="card-head">
-              <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/d448dc49f5c04348d37237fb0e8e4e99.jpg" alt="Dylan Royce" loading="lazy" decoding="async" width="56" height="56">
-              <div class="who">
-                <h3 class="name">Dylan Royce</h3>
-                <p class="role">Full-Time Lead Instructor</p>
-              </div>
-            </div>
-            <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">MMA</li></ul>
-            <ul class="creds"><li>B.S. in Exercise & Sports Science</li><li>11+ years LE experience – active-duty police officer</li><li>Brazilian Jiu-Jitsu Black Belt – 2nd Degree</li></ul>
-            <ul class="creds creds-rest" id="rest-dylan-royce" hidden><li>IBJJF No-Gi World Medalist (Black Belt)</li><li>IBJJF No-Gi Pan American & American Nationals Medalist</li><li>IBJJF New York Open Medalist</li><li>IBJJF Miami, New Orleans, Atlanta, Denver Open Medalist (10x)</li><li>Superfight Winner – Fight to Win Pro</li><li>Heroes on the Mat 180 lb Title Holder</li><li>Former Title Challenger – Fight to Win Pro</li><li>Head BJJ Coach, Precision Jiu-Jitsu</li><li>Head BJJ Coach, Marquez MMA</li><li>Specializes in no-gi grappling and LE applications</li></ul>
-            <button class="more" type="button" aria-expanded="false" aria-controls="rest-dylan-royce">
-              <span class="more-open">View full record <span class="more-n">+10</span></span>
-              <span class="more-close">Show less</span>
-            </button>
-          </article>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>Brazilian Jiu-Jitsu – 3rd Degree Black Belt</li><li>Retired Pro/Amateur MMA fighter</li><li>22 years of street cop experience</li></ul>
+
+        <ul class="creds creds-rest" id="rest-jay-wadsworth" hidden><li>14 years SWAT experience</li><li>NYS DCJS Certified SWAT Operator (2021)</li><li>DCJS Instructor: developed the mandatory curriculum for defensive tactics instructors and basic recruits; lead instructor on 18+ two-day recertification courses, 24 80-hour instructor courses, and 4 one-day overview courses (2016–Present)</li><li>SME, City of Syracuse case (2019)</li><li>SME, NYS AG&#x27;s officer grand jury testimony (2020)</li><li>Reality Based Training Instructor, DCJS (2019)</li><li>Range Instructor, DCJS (2019)</li><li>Progressive FORCE Concepts / Code 4 Concepts Defensive Tactics Instructor (2016–2022)</li><li>Jamestown Police Department SWAT Team Director of Training (2015–2023)</li><li>Team Leader, Jamestown Police SWAT Team (2011–2023)</li><li>Head Defensive Tactics Instructor, Chautauqua County Sheriff&#x27;s Academy (2012–2023)</li><li>Director of Defensive Tactics @ NYTOA (2016–Present)</li><li>Instructor at NYTOA (2013–Present)</li><li>Instructor at TacOps East/South (2016–Present)</li><li>Jamestown Police Department Lead Defensive Tactics Instructor (2010–2023)</li><li>Defensive Tactics Instructor Certification, DCJS (2010)</li><li>Taser Instructor (2010–2016)</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-jay-wadsworth">
+
+          <span class="more-open">View full record <span class="more-n">+17</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-leadership" data-tiers="leadership" data-search="scott st. clair assistant director · head instructor 13+ years of law enforcement experience brazilian jiu-jitsu black belt 11+ years swat team member regional swat team leader police sergeant nc tactical training certification (ncja) nc firearms instructor (ncja) nc subject control instructor (ncja) force on force instructor special operations combatives (socp) instructor gst level 2 instructor degree in criminal justice adjunct instructor, wake technical community college marine corps veteran brazilian jiu-jitsu swat / tactical firearms defensive tactics military">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/a2ab820fd3c90266ca7d0343ebd9ef0d.png" alt="Scott St. Clair, Assistant Director · Head Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Scott St. Clair</h3>
+
+            <p class="role">Assistant Director · Head Instructor</p>
+
+          </div>
+
         </div>
-      </section>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>13+ years of law enforcement experience</li><li>Brazilian Jiu-Jitsu Black Belt</li><li>11+ years SWAT Team member</li></ul>
+
+        <ul class="creds creds-rest" id="rest-scott-st-clair" hidden><li>Regional SWAT Team Leader</li><li>Police Sergeant</li><li>NC Tactical Training Certification (NCJA)</li><li>NC Firearms Instructor (NCJA)</li><li>NC Subject Control Instructor (NCJA)</li><li>Force on Force Instructor</li><li>Special Operations Combatives (SOCP) Instructor</li><li>GST Level 2 Instructor</li><li>Degree in Criminal Justice</li><li>Adjunct Instructor, Wake Technical Community College</li><li>Marine Corps Veteran</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-scott-st-clair">
+
+          <span class="more-open">View full record <span class="more-n">+11</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-leadership" data-tiers="leadership" data-search="matt greene full-time lead instructor effective fitness coach nsca certified strength and conditioning specialist nsca tactical strength and conditioning facilitator us army holistic health &amp; fitness coordinator st. louis metropolitan police department (6 years of service) active us army national guard recon scout/sniper – hhc 1-138th 2x crossfit games semifinalist (2021/2023) 4x crossfit games regionals (2015–2017) black belt in brazilian jiu-jitsu ibjjf world champion 2x ibjjf masters world champion 2x ibjjf pan am champion 4x ibjjf pan am medalist collegiate ncwa all-american honors – lu wrestling 2013 ncaa dii miaa conference championships – 3rd place 3x ncaa open podium finisher – lu wrestling former amateur mma fighter brazilian jiu-jitsu swat / tactical firearms mma wrestling military">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/6853c51bdb5e55d870c05ed8e1466b75.png" alt="Matt Greene, Full-Time Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Matt Greene</h3>
+
+            <p class="role">Full-Time Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">MMA</li></ul>
+
+        <ul class="creds"><li>Effective Fitness Coach</li><li>NSCA Certified Strength and Conditioning Specialist</li><li>NSCA Tactical Strength and Conditioning Facilitator</li></ul>
+
+        <ul class="creds creds-rest" id="rest-matt-greene" hidden><li>US Army Holistic Health &amp; Fitness Coordinator</li><li>St. Louis Metropolitan Police Department (6 years of service)</li><li>Active US Army National Guard Recon Scout/Sniper – HHC 1-138th</li><li>2x CrossFit Games Semifinalist (2021/2023)</li><li>4x CrossFit Games Regionals (2015–2017)</li><li>Black Belt in Brazilian Jiu-Jitsu</li><li>IBJJF World Champion</li><li>2x IBJJF Masters World Champion</li><li>2x IBJJF Pan Am Champion</li><li>4x IBJJF Pan Am Medalist</li><li>Collegiate NCWA All-American Honors – LU Wrestling 2013</li><li>NCAA DII MIAA Conference Championships – 3rd Place</li><li>3x NCAA Open Podium Finisher – LU Wrestling</li><li>Former Amateur MMA fighter</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-matt-greene">
+
+          <span class="more-open">View full record <span class="more-n">+14</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-leadership" data-tiers="leadership" data-search="dylan royce full-time lead instructor b.s. in exercise &amp; sports science 11+ years of law enforcement experience – active-duty police officer brazilian jiu-jitsu black belt – 2nd degree ibjjf no-gi world medalist (black belt) ibjjf no-gi pan american &amp; american nationals medalist ibjjf new york open medalist ibjjf miami, new orleans, atlanta, and denver open medalist (10x) superfight winner – fight to win pro heroes on the mat 180 lb title holder former title challenger – fight to win pro head brazilian jiu-jitsu coach, precision jiu-jitsu head brazilian jiu-jitsu coach, marquez mma specializes in no-gi grappling, competition prep, and le-specific applications of brazilian jiu-jitsu brazilian jiu-jitsu mma">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/d448dc49f5c04348d37237fb0e8e4e99.jpg" alt="Dylan Royce, Full-Time Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Dylan Royce</h3>
+
+            <p class="role">Full-Time Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">MMA</li></ul>
+
+        <ul class="creds"><li>B.S. in Exercise &amp; Sports Science</li><li>11+ years of law enforcement experience – active-duty police officer</li><li>Brazilian Jiu-Jitsu Black Belt – 2nd Degree</li></ul>
+
+        <ul class="creds creds-rest" id="rest-dylan-royce" hidden><li>IBJJF No-Gi World Medalist (Black Belt)</li><li>IBJJF No-Gi Pan American &amp; American Nationals Medalist</li><li>IBJJF New York Open Medalist</li><li>IBJJF Miami, New Orleans, Atlanta, and Denver Open Medalist (10x)</li><li>Superfight Winner – Fight to Win Pro</li><li>Heroes on the Mat 180 lb Title Holder</li><li>Former Title Challenger – Fight to Win Pro</li><li>Head Brazilian Jiu-Jitsu Coach, Precision Jiu-Jitsu</li><li>Head Brazilian Jiu-Jitsu Coach, Marquez MMA</li><li>Specializes in no-gi grappling, competition prep, and LE-specific applications of Brazilian Jiu-Jitsu</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-dylan-royce">
+
+          <span class="more-open">View full record <span class="more-n">+10</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      </div>
+
+    </section>
+
+    <section class="tier-group" data-group="lead">
+
+      <div class="tier-head">
+
+        <h2>Lead Instructors <span class="tier-n">16</span></h2>
+
+        <p>Full-time and lead instructors delivering the core curriculum.</p>
+
+      </div>
+
+      <div class="grid">
+
+      <article class="card t-lead" data-tiers="lead" data-search="rob hugus lead instructor 28-year retired ny state police mobile response team member expert marksman – former member of .308 marksman unit (sniper) firearms instructor defensive tactics instructor brazilian jiu-jitsu – 5th degree black belt owner, robert hugus brazilian jiu-jitsu ny dcjs defensive tactics instructor brazilian jiu-jitsu swat / tactical firearms defensive tactics">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4090d963cf5dcd0386b2e37158007d2d.jpg" alt="Rob Hugus, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Rob Hugus</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>28-year retired NY State Police</li><li>Mobile Response Team member</li><li>Expert Marksman – former member of .308 Marksman Unit (sniper)</li></ul>
+
+        <ul class="creds creds-rest" id="rest-rob-hugus" hidden><li>Firearms Instructor</li><li>Defensive Tactics Instructor</li><li>Brazilian Jiu-Jitsu – 5th Degree Black Belt</li><li>Owner, Robert Hugus Brazilian Jiu-Jitsu</li><li>NY DCJS Defensive Tactics Instructor</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-rob-hugus">
+
+          <span class="more-open">View full record <span class="more-n">+5</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="joe indelicato lead instructor 20-year veteran of new york state police (retired) state police defensive tactics instructor for 12 years member-in-charge of defensive tactics and taser for western region, nysp lead mobile field unit (riot unit) trainer for 10 years supervisor of the arrest team defensive tactics instructor for nys dcjs (2020–present) 2nd degree black belt in brazilian jiu-jitsu owner &amp; lead instructor of buffalo combat fitness (bjj, martial arts, police training academy), buffalo, ny competed at the national and world level, medaling numerous times competed in numerous headline superfights trained in judo, wrestling, boxing, and muay thai brazilian jiu-jitsu defensive tactics mma wrestling military taser / less-lethal muay thai / striking judo">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/469e1f6325531a3c5873780bbf03b5ba.jpg" alt="Joe Indelicato, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Joe Indelicato</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Defensive Tactics</li><li class="chip">MMA</li><li class="chip">Wrestling</li></ul>
+
+        <ul class="creds"><li>20-year veteran of New York State Police (retired)</li><li>State Police Defensive Tactics Instructor for 12 years</li><li>Member-In-Charge of Defensive Tactics and Taser for Western Region, NYSP</li></ul>
+
+        <ul class="creds creds-rest" id="rest-joe-indelicato" hidden><li>Lead Mobile Field Unit (Riot Unit) Trainer for 10 years</li><li>Supervisor of the Arrest Team Defensive Tactics Instructor for NYS DCJS (2020–present)</li><li>2nd Degree Black Belt in Brazilian Jiu-Jitsu</li><li>Owner &amp; Lead Instructor of Buffalo Combat Fitness (BJJ, martial arts, police training academy), Buffalo, NY</li><li>Competed at the national and world level, medaling numerous times</li><li>Competed in numerous headline superfights</li><li>Trained in judo, wrestling, boxing, and Muay Thai</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-joe-indelicato">
+
+          <span class="more-open">View full record <span class="more-n">+7</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="henry favor lead instructor 22 years law enforcement experience across police and corrections master&#x27;s degree in criminal justice administration criminal justice professor at monroe community college instructor in multiple police disciplines including dt and firearms (2005–present) 10-year swat team member brown belt in brazilian jiu-jitsu selected to teach for nys department of criminal justice services (2017) brazilian jiu-jitsu swat / tactical firearms defensive tactics">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4c04548ec9772b297c95fed79de42b0a.png" alt="Henry Favor, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Henry Favor</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>22 years law enforcement experience across police and corrections</li><li>Master&#x27;s degree in Criminal Justice Administration</li><li>Criminal Justice Professor at Monroe Community College</li></ul>
+
+        <ul class="creds creds-rest" id="rest-henry-favor" hidden><li>Instructor in multiple police disciplines including DT and Firearms (2005–present)</li><li>10-year SWAT team member</li><li>Brown Belt in Brazilian Jiu-Jitsu</li><li>Selected to teach for NYS Department of Criminal Justice Services (2017)</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-henry-favor">
+
+          <span class="more-open">View full record <span class="more-n">+4</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="brendan mckeown lead instructor burnt hills hs all-state honors (2008) in folkstyle and freestyle east stroudsburg university wrestling (div. ii, pa); national tournament qualifier 2012–2014; ranked as high as 4th in the country all-american honors, 6th at the ncaa tournament (2013) d2 super region 1 finalist 2012–2014; champion 2013; tournament outstanding wrestler (2013) senior athlete of the year at esu (2014); capital one academic all-american (2013, 2014) brazilian jiu-jitsu black belt under bruno tostes, renzo gracie latham (2021) involved in the law enforcement community since 2014 wrestling since age 11 brazilian jiu-jitsu wrestling">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/9b3f1f178403014dd30c3d37814a8874.png" alt="Brendan McKeown, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Brendan McKeown</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Wrestling</li></ul>
+
+        <ul class="creds"><li>Burnt Hills HS All-State honors (2008) in Folkstyle and Freestyle</li><li>East Stroudsburg University Wrestling (Div. II, PA); National Tournament qualifier 2012–2014; ranked as high as 4th in the country</li><li>All-American Honors, 6th at the NCAA Tournament (2013)</li></ul>
+
+        <ul class="creds creds-rest" id="rest-brendan-mckeown" hidden><li>D2 Super Region 1 finalist 2012–2014; champion 2013; Tournament Outstanding Wrestler (2013)</li><li>Senior Athlete of the Year at ESU (2014); Capital One Academic All-American (2013, 2014)</li><li>Brazilian Jiu-Jitsu Black Belt under Bruno Tostes, Renzo Gracie Latham (2021)</li><li>Involved in the law enforcement community since 2014</li><li>Wrestling since age 11</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-brendan-mckeown">
+
+          <span class="more-open">View full record <span class="more-n">+5</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="ryan romig lead instructor police sergeant with 15 years of law enforcement experience current swat team leader defensive tactics instructor army veteran brazilian jiu-jitsu purple belt brazilian jiu-jitsu swat / tactical defensive tactics military">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/844f071871ca8c2853d443887bb9938e.jpg" alt="Ryan Romig, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Ryan Romig</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Defensive Tactics</li><li class="chip">Military</li></ul>
+
+        <ul class="creds"><li>Police Sergeant with 15 years of law enforcement experience</li><li>Current SWAT Team Leader</li><li>Defensive Tactics Instructor</li></ul>
+
+        <ul class="creds creds-rest" id="rest-ryan-romig" hidden><li>Army veteran</li><li>Brazilian Jiu-Jitsu Purple Belt</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-ryan-romig">
+
+          <span class="more-open">View full record <span class="more-n">+2</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="doug braman lead instructor brazilian jiu-jitsu black belt high school and collegiate wrestler 17 years as defensive tactics instructor 20 years law enforcement experience retired as sgt., defensive tactics &amp; physical training, new york state police taser master instructor dcjs instructor evaluator – master instructor bjj instructor at eddie fyvie jiu-jitsu academy and kinetix combat sports &amp; fitness dcjs reality based training instructor; sabre oc master instructor brazilian jiu-jitsu defensive tactics wrestling taser / less-lethal">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/ecb448ef77012db018edcca2cbc4bb58.png" alt="Doug Braman, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Doug Braman</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Defensive Tactics</li><li class="chip">Wrestling</li><li class="chip">Taser / Less-Lethal</li></ul>
+
+        <ul class="creds"><li>Brazilian Jiu-Jitsu Black Belt</li><li>High school and collegiate wrestler</li><li>17 years as Defensive Tactics Instructor</li></ul>
+
+        <ul class="creds creds-rest" id="rest-doug-braman" hidden><li>20 years law enforcement experience</li><li>Retired as Sgt., Defensive Tactics &amp; Physical Training, New York State Police</li><li>Taser Master Instructor</li><li>DCJS Instructor Evaluator – Master Instructor</li><li>BJJ Instructor at Eddie Fyvie Jiu-Jitsu Academy and Kinetix Combat Sports &amp; Fitness</li><li>DCJS Reality Based Training Instructor; SABRE OC Master Instructor</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-doug-braman">
+
+          <span class="more-open">View full record <span class="more-n">+6</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="andrew napieralski lead instructor current assistant team leader, full-time swat team police sergeant with 15 years of law enforcement experience 9 years swat experience dcjs defensive tactics and range instructor brazilian jiu-jitsu black belt brazilian jiu-jitsu swat / tactical firearms defensive tactics">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/72b0adcf544986b0bbec8b5398e2941c.jpg" alt="Andrew Napieralski, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Andrew Napieralski</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>Current Assistant Team Leader, full-time SWAT Team</li><li>Police Sergeant with 15 years of law enforcement experience</li><li>9 years SWAT experience</li></ul>
+
+        <ul class="creds creds-rest" id="rest-andrew-napieralski" hidden><li>DCJS Defensive Tactics and Range Instructor</li><li>Brazilian Jiu-Jitsu Black Belt</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-andrew-napieralski">
+
+          <span class="more-open">View full record <span class="more-n">+2</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="michael peckham lead instructor current leo detective (10+ years) 20+ years us air force security forces current sfs snco usaf emergency services team dcjs dt instructor dcjs firearms instructor rbt instructor black belt in bjj usaf combatives instructor 8 years k9 handler; 6 years detective trained police agencies in iraq, kuwait, africa, korea, and el salvador brazilian jiu-jitsu firearms defensive tactics military">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/ae4f7468f0e89a3564cdd3fa11cc37a0.png" alt="Michael Peckham, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Michael Peckham</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li><li class="chip">Military</li></ul>
+
+        <ul class="creds"><li>Current LEO Detective (10+ years)</li><li>20+ years US Air Force Security Forces</li><li>Current SFS SNCO</li></ul>
+
+        <ul class="creds creds-rest" id="rest-michael-peckham" hidden><li>USAF Emergency Services Team</li><li>DCJS DT Instructor</li><li>DCJS Firearms Instructor</li><li>RBT Instructor</li><li>Black Belt in BJJ</li><li>USAF Combatives Instructor</li><li>8 years K9 Handler; 6 years Detective</li><li>Trained police agencies in Iraq, Kuwait, Africa, Korea, and El Salvador</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-michael-peckham">
+
+          <span class="more-open">View full record <span class="more-n">+8</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="josh roth lead instructor ny state trooper; k9 handler, defensive tactics instructor, mobile field unit, distinguished pistol expert owner &amp; head instructor, kinetix combat sports brazilian jiu-jitsu – 2nd degree black belt, bjj revolution (julio &quot;foca&quot; fernandez) bjj revolution certified brazilian jiu-jitsu instructor muay thai khuen kru (instructor) – thai boxing association of the usa ibjjf master worlds bronze medalist (black belt) veteran of mma, muay thai, and bjj competition former division i collegiate football player – ub bulls former nfl player – buffalo bills, kansas city chiefs brazilian jiu-jitsu firearms defensive tactics mma military muay thai / striking">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/385bd5e01b49b3cb23d01414e4c36daf.jpg" alt="Josh Roth, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Josh Roth</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li><li class="chip">MMA</li></ul>
+
+        <ul class="creds"><li>NY State Trooper; K9 Handler, Defensive Tactics Instructor, Mobile Field Unit, Distinguished Pistol Expert</li><li>Owner &amp; Head Instructor, Kinetix Combat Sports</li><li>Brazilian Jiu-Jitsu – 2nd Degree Black Belt, BJJ Revolution (Julio &quot;Foca&quot; Fernandez)</li></ul>
+
+        <ul class="creds creds-rest" id="rest-josh-roth" hidden><li>BJJ Revolution Certified Brazilian Jiu-Jitsu Instructor</li><li>Muay Thai Khuen Kru (Instructor) – Thai Boxing Association of the USA</li><li>IBJJF Master Worlds Bronze Medalist (Black Belt)</li><li>Veteran of MMA, Muay Thai, and BJJ competition</li><li>Former Division I Collegiate Football Player – UB Bulls</li><li>Former NFL player – Buffalo Bills, Kansas City Chiefs</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-josh-roth">
+
+          <span class="more-open">View full record <span class="more-n">+6</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="cody goodfriend lead instructor current law enforcement officer with 12+ years of experience brazilian jiu-jitsu purple belt nys-dcjs master defensive tactics instructor current swat team operator, 6+ years nys-dcjs firearms instructor reality-based training instructor former amateur mma fighter brazilian jiu-jitsu swat / tactical firearms defensive tactics mma">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/1320f970b8cababd4280d1847b0a71d1.png" alt="Cody Goodfriend, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Cody Goodfriend</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>Current law enforcement officer with 12+ years of experience</li><li>Brazilian Jiu-Jitsu Purple Belt</li><li>NYS-DCJS Master Defensive Tactics Instructor</li></ul>
+
+        <ul class="creds creds-rest" id="rest-cody-goodfriend" hidden><li>Current SWAT team operator, 6+ years</li><li>NYS-DCJS Firearms Instructor</li><li>Reality-Based Training Instructor</li><li>Former amateur MMA fighter</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-cody-goodfriend">
+
+          <span class="more-open">View full record <span class="more-n">+4</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="heath beaudoin lead instructor brazilian jiu-jitsu black belt retired north las vegas police department lieutenant swat tactical team leader (2014–2019) crime suppression unit sergeant (2012–2014) narcotics detective (2003–2009) instructor at nytoa (2019–present) instructor at tacops (2019–present) firearms instructor at tactical dynamics (2022–present) brazilian jiu-jitsu swat / tactical firearms">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4ca2344f26808e61827ea6d0f42acbc9.jpg" alt="Heath Beaudoin, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Heath Beaudoin</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li></ul>
+
+        <ul class="creds"><li>Brazilian Jiu-Jitsu Black Belt</li><li>Retired North Las Vegas Police Department Lieutenant</li><li>SWAT Tactical Team Leader (2014–2019)</li></ul>
+
+        <ul class="creds creds-rest" id="rest-heath-beaudoin" hidden><li>Crime Suppression Unit Sergeant (2012–2014)</li><li>Narcotics Detective (2003–2009)</li><li>Instructor at NYTOA (2019–present)</li><li>Instructor at TacOps (2019–present)</li><li>Firearms Instructor at Tactical Dynamics (2022–present)</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-heath-beaudoin">
+
+          <span class="more-open">View full record <span class="more-n">+5</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="mike varley lead instructor 12 years law enforcement experience 8 years swat dt instructor since 2015 brazilian jiu-jitsu black belt 25 years of grappling experience brazilian jiu-jitsu swat / tactical defensive tactics">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/d22a50e2d8980a3df794802097afda9f.png" alt="Mike Varley, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Mike Varley</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>12 years law enforcement experience</li><li>8 years SWAT</li><li>DT Instructor since 2015</li></ul>
+
+        <ul class="creds creds-rest" id="rest-mike-varley" hidden><li>Brazilian Jiu-Jitsu Black Belt</li><li>25 years of grappling experience</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-mike-varley">
+
+          <span class="more-open">View full record <span class="more-n">+2</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="chad teets lead instructor detective lieutenant, washtenaw county sheriff&#x27;s office (michigan) washtenaw metro swat team commander detroit jiu-jitsu black belt us army level 3 combatives certified efc level 1 certified swat operator instructor sniper instructor pistol/rifle/shotgun instructor 15+ years of law enforcement experience 21+ years of military experience military occupations: infantryman, combat engineer, tank armor crewman brazilian jiu-jitsu swat / tactical firearms military">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/a405a0344783d6d1d29a7590025733ac.jpg" alt="Chad Teets, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Chad Teets</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Military</li></ul>
+
+        <ul class="creds"><li>Detective Lieutenant, Washtenaw County Sheriff&#x27;s Office (Michigan)</li><li>Washtenaw Metro SWAT Team Commander</li><li>Detroit Jiu-Jitsu Black Belt</li></ul>
+
+        <ul class="creds creds-rest" id="rest-chad-teets" hidden><li>US Army Level 3 Combatives Certified</li><li>EFC Level 1 Certified</li><li>SWAT Operator Instructor</li><li>Sniper Instructor</li><li>Pistol/Rifle/Shotgun Instructor</li><li>15+ years of law enforcement experience</li><li>21+ years of military experience</li><li>Military occupations: Infantryman, Combat Engineer, Tank Armor Crewman</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-chad-teets">
+
+          <span class="more-open">View full record <span class="more-n">+8</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="rick rogers lead instructor us marine corps (2004–2008) active law enforcement officer (2009–present) swat operator firearms instructor defensive tactics instructor brazilian jiu-jitsu black belt brazilian jiu-jitsu swat / tactical firearms defensive tactics military">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/eb3085c1d447dc1d24b217c03e0de3df.png" alt="Rick Rogers, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Rick Rogers</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>US Marine Corps (2004–2008)</li><li>Active Law Enforcement Officer (2009–Present)</li><li>SWAT Operator</li></ul>
+
+        <ul class="creds creds-rest" id="rest-rick-rogers" hidden><li>Firearms Instructor</li><li>Defensive Tactics Instructor</li><li>Brazilian Jiu-Jitsu Black Belt</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-rick-rogers">
+
+          <span class="more-open">View full record <span class="more-n">+3</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="dan miller lead instructor brazilian jiu-jitsu black belt (2023) 9-year veteran of the omaha police department b.s. in criminology and criminal justice (university of nebraska omaha) owner / head of operations at the best jiu-jitsu llc jiu-jitsu coach at skywalker 101 boxing academy lead defensive tactics instructor at the omaha police academy firearms instructor brazilian jiu-jitsu firearms defensive tactics military muay thai / striking">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/eaf2105ef4062edcadae7e8d22e6b061.jpg" alt="Dan Miller, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Dan Miller</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li><li class="chip">Military</li></ul>
+
+        <ul class="creds"><li>Brazilian Jiu-Jitsu Black Belt (2023)</li><li>9-year veteran of the Omaha Police Department</li><li>B.S. in Criminology and Criminal Justice (University of Nebraska Omaha)</li></ul>
+
+        <ul class="creds creds-rest" id="rest-dan-miller" hidden><li>Owner / Head of Operations at The Best Jiu-Jitsu LLC</li><li>Jiu-Jitsu coach at Skywalker 101 Boxing Academy</li><li>Lead Defensive Tactics Instructor at the Omaha Police Academy</li><li>Firearms Instructor</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-dan-miller">
+
+          <span class="more-open">View full record <span class="more-n">+4</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-lead" data-tiers="lead" data-search="jesse tapsfield lead instructor brazilian jiu-jitsu black belt owner of taps brazilian jiu-jitsu 2-0 mma record 20 years in law enforcement academy lead arrest control / defensive tactics instructor le ground fighting instructor krav maga instructor gracie survival tactics level 1 &amp; 2 instructor teaching methodology / train-the-trainer certified le driving instructor le handgun instructor le patrol rifle instructor iard (active shooter response) instructor shoot house instructor taser instructor; oc instructor b.s. in applied health, minor in psychology brazilian jiu-jitsu firearms defensive tactics mma taser / less-lethal krav maga">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/29d1c84cf3b71b4dec8d950913a02b24.png" alt="Jesse Tapsfield, Lead Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Jesse Tapsfield</h3>
+
+            <p class="role">Lead Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li><li class="chip">MMA</li></ul>
+
+        <ul class="creds"><li>Brazilian Jiu-Jitsu Black Belt</li><li>Owner of Taps Brazilian Jiu-Jitsu</li><li>2-0 MMA record</li></ul>
+
+        <ul class="creds creds-rest" id="rest-jesse-tapsfield" hidden><li>20 years in law enforcement</li><li>Academy Lead Arrest Control / Defensive Tactics Instructor</li><li>LE Ground Fighting Instructor</li><li>Krav Maga Instructor</li><li>Gracie Survival Tactics Level 1 &amp; 2 Instructor</li><li>Teaching Methodology / Train-the-Trainer Certified</li><li>LE Driving Instructor</li><li>LE Handgun Instructor</li><li>LE Patrol Rifle Instructor</li><li>IARD (Active Shooter Response) Instructor</li><li>Shoot House Instructor</li><li>Taser Instructor; OC Instructor</li><li>B.S. in Applied Health, Minor in Psychology</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-jesse-tapsfield">
+
+          <span class="more-open">View full record <span class="more-n">+13</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      </div>
+
+    </section>
+
+    <section class="tier-group" data-group="support">
+
+      <div class="tier-head">
+
+        <h2>Support Instructors <span class="tier-n">16</span></h2>
+
+        <p>Instructors supporting courses across the country.</p>
+
+      </div>
+
+      <div class="grid">
+
+      <article class="card t-support" data-tiers="support" data-search="manny vazquez support instructor 10th planet jiu-jitsu black belt former officer at glenview police department pti arrest &amp; control tactics instructor professional mixed martial artist owner / head coach of 10th planet greenville, sc brazilian jiu-jitsu defensive tactics mma">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/f3008cd5cdadac3e788a99abf94a1d0f.jpeg" alt="Manny Vazquez, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Manny Vazquez</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Defensive Tactics</li><li class="chip">MMA</li></ul>
+
+        <ul class="creds"><li>10th Planet Jiu-Jitsu Black Belt</li><li>Former Officer at Glenview Police Department</li><li>PTI Arrest &amp; Control Tactics Instructor</li></ul>
+
+        <ul class="creds creds-rest" id="rest-manny-vazquez" hidden><li>Professional Mixed Martial Artist</li><li>Owner / Head Coach of 10th Planet Greenville, SC</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-manny-vazquez">
+
+          <span class="more-open">View full record <span class="more-n">+2</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="jayde sheeley support instructor professional mma fighter 20+ years of martial arts experience current road patrol deputy in ohio with 5 years of experience brazilian jiu-jitsu purple belt active brazilian jiu-jitsu competitor bachelor&#x27;s degree in sociology/criminology from ohio university women&#x27;s hs/ms wrestling coach opota subject control instructor certification supervisor at a juvenile residential center (2016) defensive tactics instructor at clark state police academy brazilian jiu-jitsu defensive tactics mma wrestling">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4cf703c41dc135df1fefa33417a843d7.jpeg" alt="Jayde Sheeley, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Jayde Sheeley</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Defensive Tactics</li><li class="chip">MMA</li><li class="chip">Wrestling</li></ul>
+
+        <ul class="creds"><li>Professional MMA fighter</li><li>20+ years of martial arts experience</li><li>Current road patrol Deputy in Ohio with 5 years of experience</li></ul>
+
+        <ul class="creds creds-rest" id="rest-jayde-sheeley" hidden><li>Brazilian Jiu-Jitsu Purple Belt</li><li>Active Brazilian Jiu-Jitsu competitor</li><li>Bachelor&#x27;s degree in Sociology/Criminology from Ohio University</li><li>Women&#x27;s HS/MS wrestling coach</li><li>OPOTA Subject Control Instructor Certification</li><li>Supervisor at a juvenile residential center (2016)</li><li>Defensive Tactics Instructor at Clark State Police Academy</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-jayde-sheeley">
+
+          <span class="more-open">View full record <span class="more-n">+7</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="joseph farina support instructor patrol sergeant with 17+ years of law enforcement experience brazilian jiu-jitsu black belt 34+ years of martial arts experience across a variety of disciplines lead defensive tactics instructor, morris county police academy basic class defensive tactics instructor, passaic county police academy class 2s efc instructor c4c level 3 instructor gst level 1 &amp; 2 instructor krav maga for leo instructor physical training instructor o.c. instructor brazilian jiu-jitsu defensive tactics taser / less-lethal krav maga">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/a26b50488124662daeb9093667b05bca.png" alt="Joseph Farina, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Joseph Farina</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Defensive Tactics</li><li class="chip">Taser / Less-Lethal</li><li class="chip">Krav Maga</li></ul>
+
+        <ul class="creds"><li>Patrol Sergeant with 17+ years of law enforcement experience</li><li>Brazilian Jiu-Jitsu Black Belt</li><li>34+ years of martial arts experience across a variety of disciplines</li></ul>
+
+        <ul class="creds creds-rest" id="rest-joseph-farina" hidden><li>Lead Defensive Tactics Instructor, Morris County Police Academy basic class</li><li>Defensive Tactics Instructor, Passaic County Police Academy Class 2s</li><li>EFC Instructor</li><li>C4C Level 3 Instructor</li><li>GST Level 1 &amp; 2 Instructor</li><li>Krav Maga for LEO Instructor</li><li>Physical Training Instructor</li><li>O.C. Instructor</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-joseph-farina">
+
+          <span class="more-open">View full record <span class="more-n">+8</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="daniel riggi support instructor 8 years with new york state police acting technical sergeant – physical training / defensive tactics dcjs certified defensive tactics instructor efc instructor gst level 1 instructor axon master taser instructor brazilian jiu-jitsu black belt division i wrestler at binghamton university brazilian jiu-jitsu defensive tactics wrestling taser / less-lethal">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/c891e63f66ca576d9b286e56073b30c5.png" alt="Daniel Riggi, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Daniel Riggi</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Defensive Tactics</li><li class="chip">Wrestling</li><li class="chip">Taser / Less-Lethal</li></ul>
+
+        <ul class="creds"><li>8 years with New York State Police</li><li>Acting Technical Sergeant – Physical Training / Defensive Tactics</li><li>DCJS Certified Defensive Tactics Instructor</li></ul>
+
+        <ul class="creds creds-rest" id="rest-daniel-riggi" hidden><li>EFC Instructor</li><li>GST Level 1 Instructor</li><li>Axon Master Taser Instructor</li><li>Brazilian Jiu-Jitsu Black Belt</li><li>Division I Wrestler at Binghamton University</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-daniel-riggi">
+
+          <span class="more-open">View full record <span class="more-n">+5</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="steve martell support instructor police officer – new jersey (2009–present) field training officer physical training instructor b.s. criminal justice brazilian jiu-jitsu purple belt judo brown belt 2x ncaa all-american – johnson &amp; wales university johnson &amp; wales university athletic hall of fame high school wrestling coach (2009–present) 2004 nj high school wrestling state champion brazilian jiu-jitsu wrestling judo">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/b1aa560594352376e186d7b647960bf1.jpg" alt="Steve Martell, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Steve Martell</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Wrestling</li><li class="chip">Judo</li></ul>
+
+        <ul class="creds"><li>Police Officer – New Jersey (2009–Present)</li><li>Field Training Officer</li><li>Physical Training Instructor</li></ul>
+
+        <ul class="creds creds-rest" id="rest-steve-martell" hidden><li>B.S. Criminal Justice</li><li>Brazilian Jiu-Jitsu Purple Belt</li><li>Judo Brown Belt</li><li>2x NCAA All-American – Johnson &amp; Wales University</li><li>Johnson &amp; Wales University Athletic Hall of Fame</li><li>High School Wrestling Coach (2009–Present)</li><li>2004 NJ High School Wrestling State Champion</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-steve-martell">
+
+          <span class="more-open">View full record <span class="more-n">+7</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="kristopher schimek support instructor jamestown ny police since 2016 swat team operator since 2017 three-time all-american collegiate wrestler junior college national runner-up head college wrestling coach since 2016 mma / boxing experience 10+ years of no-gi brazilian jiu-jitsu experience brazilian jiu-jitsu swat / tactical mma wrestling muay thai / striking">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/95152d6034d543f01eb2cb79a7ee18c2.png" alt="Kristopher Schimek, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Kristopher Schimek</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">MMA</li><li class="chip">Wrestling</li></ul>
+
+        <ul class="creds"><li>Jamestown NY Police since 2016</li><li>SWAT Team Operator since 2017</li><li>Three-time All-American Collegiate Wrestler</li></ul>
+
+        <ul class="creds creds-rest" id="rest-kristopher-schimek" hidden><li>Junior College National Runner-Up</li><li>Head College Wrestling Coach since 2016</li><li>MMA / Boxing experience</li><li>10+ years of no-gi Brazilian Jiu-Jitsu experience</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-kristopher-schimek">
+
+          <span class="more-open">View full record <span class="more-n">+4</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="lana toporek support instructor brazilian jiu-jitsu black belt kajukenbo black belt 16-year police officer; 14 years of patrol experience tcole master peace officer license tcole instructor license austin pd defensive tactics instructor (2016–2017) patrol corporal (2020–2022) sex crimes detective (2022–present) pflugerville pd dynamic entry team member (2010–2014) pflugerville pd taser instructor (2010–2014) former field training officer fletc certified defensive tactics instructor brazilian jiu-jitsu swat / tactical defensive tactics taser / less-lethal">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/813c4c7ebad1a82ed9fe6ae39882eb06.png" alt="Lana Toporek, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Lana Toporek</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Defensive Tactics</li><li class="chip">Taser / Less-Lethal</li></ul>
+
+        <ul class="creds"><li>Brazilian Jiu-Jitsu Black Belt</li><li>Kajukenbo Black Belt</li><li>16-year Police Officer; 14 years of patrol experience</li></ul>
+
+        <ul class="creds creds-rest" id="rest-lana-toporek" hidden><li>TCOLE Master Peace Officer license</li><li>TCOLE Instructor License</li><li>Austin PD Defensive Tactics Instructor (2016–2017)</li><li>Patrol Corporal (2020–2022)</li><li>Sex Crimes Detective (2022–Present)</li><li>Pflugerville PD Dynamic Entry Team member (2010–2014)</li><li>Pflugerville PD Taser Instructor (2010–2014)</li><li>Former Field Training Officer</li><li>FLETC Certified Defensive Tactics Instructor</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-lana-toporek">
+
+          <span class="more-open">View full record <span class="more-n">+9</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="david johnson support instructor patrol deputy with 2 years of law enforcement experience brazilian jiu-jitsu black belt retired army combat medic / navy corpsman – 22 years of service tactical combat casualty care instructor army master combatives instructor florida emt aha cpr certified brazilian jiu-jitsu swat / tactical military tactical medicine">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4245e3ca386bc9044602656dc6cfb910.jpg" alt="David Johnson, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">David Johnson</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Military</li><li class="chip">Tactical Medicine</li></ul>
+
+        <ul class="creds"><li>Patrol Deputy with 2 years of law enforcement experience</li><li>Brazilian Jiu-Jitsu Black Belt</li><li>Retired Army Combat Medic / Navy Corpsman – 22 years of service</li></ul>
+
+        <ul class="creds creds-rest" id="rest-david-johnson" hidden><li>Tactical Combat Casualty Care Instructor</li><li>Army Master Combatives Instructor</li><li>Florida EMT</li><li>AHA CPR Certified</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-david-johnson">
+
+          <span class="more-open">View full record <span class="more-n">+4</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="anastasia moore support instructor current law enforcement officer with 8 years of patrol experience 15 years experience in law enforcement former intelligence analyst, texas rangers border security operations center master&#x27;s degree in criminal intelligence brazilian jiu-jitsu black belt brazilian jiu-jitsu">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/ce505d2b755d0a277426e0364f4a2593.jpg" alt="Anastasia Moore, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Anastasia Moore</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li></ul>
+
+        <ul class="creds"><li>Current law enforcement officer with 8 years of patrol experience</li><li>15 years experience in law enforcement</li><li>Former Intelligence Analyst, Texas Rangers Border Security Operations Center</li></ul>
+
+        <ul class="creds creds-rest" id="rest-anastasia-moore" hidden><li>Master&#x27;s Degree in Criminal Intelligence</li><li>Brazilian Jiu-Jitsu Black Belt</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-anastasia-moore">
+
+          <span class="more-open">View full record <span class="more-n">+2</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="frank jordan support instructor sc law enforcement (2007–present) brazilian jiu-jitsu black belt – alliance defensive tactics instructor ground defense instructor sc governor&#x27;s security detail (2017–2021) brazilian jiu-jitsu defensive tactics">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/f6fa4809ce10f4d074eb25ce978f07e2.png" alt="Frank Jordan, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Frank Jordan</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>SC Law Enforcement (2007–present)</li><li>Brazilian Jiu-Jitsu Black Belt – Alliance</li><li>Defensive Tactics Instructor</li></ul>
+
+        <ul class="creds creds-rest" id="rest-frank-jordan" hidden><li>Ground Defense Instructor</li><li>SC Governor&#x27;s security detail (2017–2021)</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-frank-jordan">
+
+          <span class="more-open">View full record <span class="more-n">+2</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="don wasser support instructor active leo with 19 years of experience current swat member of 9 years nys certified instructor of firearms, physical training, and defensive tactics since 2009 nys master dt instructor brazilian jiu-jitsu brown belt edged weapon instructor brazilian jiu-jitsu swat / tactical firearms defensive tactics taser / less-lethal">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/55ba867595f044f98e054e694245d30a.png" alt="Don Wasser, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Don Wasser</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>Active LEO with 19 years of experience</li><li>Current SWAT member of 9 years</li><li>NYS Certified Instructor of Firearms, Physical Training, and Defensive Tactics since 2009</li></ul>
+
+        <ul class="creds creds-rest" id="rest-don-wasser" hidden><li>NYS Master DT Instructor</li><li>Brazilian Jiu-Jitsu Brown Belt</li><li>Edged Weapon Instructor</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-don-wasser">
+
+          <span class="more-open">View full record <span class="more-n">+3</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="jimmie rivera support instructor 2 years as police officer, elmwood park pd, new jersey 3 years as a dispatcher, elmwood park pd, new jersey 25+ years as a martial artist 16 years as a professional mma fighter (23-5 record) fought 6 years in the ufc; ranked as high as #2 in the bantamweight division currently signed to bare knuckle fighting championship (record 3-1-1) owner / instructor of tiger schulmann&#x27;s mma, short hills, nj certified law enforcement defensive tactics instructor certified use of force instructor defensive tactics mma">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/5a30dc95d7b6e4a499ba067f934c2f00.png" alt="Jimmie Rivera, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Jimmie Rivera</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Defensive Tactics</li><li class="chip">MMA</li></ul>
+
+        <ul class="creds"><li>2 years as Police Officer, Elmwood Park PD, New Jersey</li><li>3 years as a dispatcher, Elmwood Park PD, New Jersey</li><li>25+ years as a martial artist</li></ul>
+
+        <ul class="creds creds-rest" id="rest-jimmie-rivera" hidden><li>16 years as a professional MMA fighter (23-5 record)</li><li>Fought 6 years in the UFC; ranked as high as #2 in the bantamweight division</li><li>Currently signed to Bare Knuckle Fighting Championship (record 3-1-1)</li><li>Owner / Instructor of Tiger Schulmann&#x27;s MMA, Short Hills, NJ</li><li>Certified Law Enforcement Defensive Tactics Instructor</li><li>Certified Use of Force Instructor</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-jimmie-rivera">
+
+          <span class="more-open">View full record <span class="more-n">+6</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="will holzapfel support instructor nine years of leo experience, starting as a corrections officer for the florida doc served as a jail deputy with the charlotte county sheriff&#x27;s office and denver sheriff&#x27;s department bjj black belt former owner and head instructor of black tie brazilian jiu-jitsu, centennial, co led black tie to become the first denver-area academy to partner with the adopt-a-cop bjj program coach at black tie brazilian jiu-jitsu, cape coral, fl active brazilian jiu-jitsu competitor brazilian jiu-jitsu">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/8b8ad8f529110bb5db15cc31506e8274.png" alt="Will Holzapfel, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Will Holzapfel</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li></ul>
+
+        <ul class="creds"><li>Nine years of LEO experience, starting as a Corrections Officer for the Florida DOC</li><li>Served as a Jail Deputy with the Charlotte County Sheriff&#x27;s Office and Denver Sheriff&#x27;s Department</li><li>BJJ Black Belt</li></ul>
+
+        <ul class="creds creds-rest" id="rest-will-holzapfel" hidden><li>Former owner and head instructor of Black Tie Brazilian Jiu-Jitsu, Centennial, CO</li><li>Led Black Tie to become the first Denver-area academy to partner with the Adopt-A-Cop BJJ Program</li><li>Coach at Black Tie Brazilian Jiu-Jitsu, Cape Coral, FL</li><li>Active Brazilian Jiu-Jitsu competitor</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-will-holzapfel">
+
+          <span class="more-open">View full record <span class="more-n">+4</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="michael foligno support instructor current chief of police, elmwood park pd, new jersey 35 years law enforcement experience, 11 as chief 12 years mma experience and training owner / instructor of tiger schulmann&#x27;s mma, west orange, nj former member, bergen county rapid deployment force certified law enforcement defensive tactics instructor certified use of force instructor accomplished wrestler and coach with ncaa coaching experience swat / tactical defensive tactics mma wrestling">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/17bbdeccfdb688ce1ee96c53ee314c72.png" alt="Michael Foligno, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Michael Foligno</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">SWAT / Tactical</li><li class="chip">Defensive Tactics</li><li class="chip">MMA</li><li class="chip">Wrestling</li></ul>
+
+        <ul class="creds"><li>Current Chief of Police, Elmwood Park PD, New Jersey</li><li>35 years law enforcement experience, 11 as Chief</li><li>12 years MMA experience and training</li></ul>
+
+        <ul class="creds creds-rest" id="rest-michael-foligno" hidden><li>Owner / Instructor of Tiger Schulmann&#x27;s MMA, West Orange, NJ</li><li>Former member, Bergen County Rapid Deployment Force</li><li>Certified Law Enforcement Defensive Tactics Instructor</li><li>Certified Use of Force Instructor</li><li>Accomplished wrestler and coach with NCAA coaching experience</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-michael-foligno">
+
+          <span class="more-open">View full record <span class="more-n">+5</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="josh cole support instructor 2nd degree brazilian jiu-jitsu black belt owner / head instructor at marietta combat sports patrol lieutenant with 13+ years of law enforcement swat team leader with 10+ years on team instructor in defensive tactics, pistol, rifle, use of force, taser, active shooter former wrestling coach 5-0 amateur mma competed in and won professional superfights, ibjjf, and local tournaments brazilian jiu-jitsu swat / tactical firearms defensive tactics mma wrestling taser / less-lethal">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/720e2a79af674f5351dac27a9c087600.png" alt="Josh Cole, Support Instructor, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Josh Cole</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">SWAT / Tactical</li><li class="chip">Firearms</li><li class="chip">Defensive Tactics</li></ul>
+
+        <ul class="creds"><li>2nd Degree Brazilian Jiu-Jitsu Black Belt</li><li>Owner / Head Instructor at Marietta Combat Sports</li><li>Patrol Lieutenant with 13+ years of law enforcement</li></ul>
+
+        <ul class="creds creds-rest" id="rest-josh-cole" hidden><li>SWAT Team Leader with 10+ years on team</li><li>Instructor in defensive tactics, pistol, rifle, use of force, Taser, active shooter</li><li>Former wrestling coach</li><li>5-0 amateur MMA</li><li>Competed in and won professional superfights, IBJJF, and local tournaments</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-josh-cole">
+
+          <span class="more-open">View full record <span class="more-n">+5</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-support" data-tiers="support" data-search="dylan freedman support instructor collegiate wrestler retired mma fighter active competitor in bjj, brown belt mma / bjj coach college wrestling coach corrections officer, nys dept. of corrections and community supervision drill instructor, nys doccs army infantryman / paratrooper, 82nd airborne division combat deployment, afghanistan u.s. army combatives level 1 and level 2 u.s. army special operations combatives program level 1 brazilian jiu-jitsu mma wrestling military">
+
+        <div class="card-head">
+
+          <div class="avatar" aria-hidden="true">DF</div>
+
+          <div class="who">
+
+            <h3 class="name">Dylan Freedman</h3>
+
+            <p class="role">Support Instructor</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">MMA</li><li class="chip">Wrestling</li><li class="chip">Military</li></ul>
+
+        <ul class="creds"><li>Collegiate wrestler</li><li>Retired MMA fighter</li><li>Active competitor in BJJ, Brown Belt</li></ul>
+
+        <ul class="creds creds-rest" id="rest-dylan-freedman" hidden><li>MMA / BJJ coach</li><li>College wrestling coach</li><li>Corrections Officer, NYS Dept. of Corrections and Community Supervision</li><li>Drill Instructor, NYS DOCCS</li><li>Army Infantryman / Paratrooper, 82nd Airborne Division</li><li>Combat deployment, Afghanistan</li><li>U.S. Army Combatives Level 1 and Level 2</li><li>U.S. Army Special Operations Combatives Program Level 1</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-dylan-freedman">
+
+          <span class="more-open">View full record <span class="more-n">+8</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      </div>
+
+    </section>
+
+    <section class="tier-group" data-group="founders">
+
+      <div class="tier-head">
+
+        <h2>Founders <span class="tier-n">3</span></h2>
+
+        <p>The team that built the EF Combatives program.</p>
+
+      </div>
+
+      <div class="grid">
+
+      <article class="card t-founders" data-tiers="founders" data-search="adam haidary founder founder, police posts co-founder, effective fitness 7 years of law enforcement experience (2013–2020) former training supervisor – rank: sgt. south carolina criminal justice academy: bid certified instructor bjj brown belt assists local and state agencies with k9 training and officer safety tactics implemented tac med program in 2019 instructor certifications: fletc tac med instructor, tccc, b-con instructor, fbi letss, nasbla officer water survival instructor, alerrt instructor brazilian jiu-jitsu tactical medicine">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/ffd80a0586b70e3b99e2025ee7aa6e9e.png" alt="Adam Haidary, Founder, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Adam Haidary</h3>
+
+            <p class="role">Founder</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Brazilian Jiu-Jitsu</li><li class="chip">Tactical Medicine</li></ul>
+
+        <ul class="creds"><li>Founder, Police Posts</li><li>Co-founder, Effective Fitness</li><li>7 years of law enforcement experience (2013–2020)</li></ul>
+
+        <ul class="creds creds-rest" id="rest-adam-haidary" hidden><li>Former Training Supervisor – Rank: Sgt.</li><li>South Carolina Criminal Justice Academy: BID Certified Instructor</li><li>BJJ Brown Belt</li><li>Assists local and state agencies with K9 training and officer safety tactics</li><li>Implemented Tac Med program in 2019</li><li>Instructor certifications: FLETC Tac Med Instructor, TCCC, B-Con Instructor, FBI LETSS, NASBLA Officer Water Survival Instructor, ALERRT Instructor</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-adam-haidary">
+
+          <span class="more-open">View full record <span class="more-n">+6</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-founders" data-tiers="founders" data-search="dane gifford founder co-founder and operator across efc, eft, and policeposts usaf veteran b.s. exercise science a.s. allied health – physical therapist assistant leads company operations, systems, and financial strategy committed to developing instructors and improving training standards nationwide dedicated to serving law enforcement through fitness, mindset, and skill focused on building lasting organizations that make a real-world impact born &amp; raised in montana military">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/6e5c49fd4068dace55e75399c96159ac.png" alt="Dane Gifford, Founder, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Dane Gifford</h3>
+
+            <p class="role">Founder</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"><li class="chip">Military</li></ul>
+
+        <ul class="creds"><li>Co-founder and operator across EFC, EFT, and PolicePosts</li><li>USAF Veteran</li><li>B.S. Exercise Science</li></ul>
+
+        <ul class="creds creds-rest" id="rest-dane-gifford" hidden><li>A.S. Allied Health – Physical Therapist Assistant</li><li>Leads company operations, systems, and financial strategy</li><li>Committed to developing instructors and improving training standards nationwide</li><li>Dedicated to serving law enforcement through fitness, mindset, and skill</li><li>Focused on building lasting organizations that make a real-world impact</li><li>Born &amp; raised in Montana</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-dane-gifford">
+
+          <span class="more-open">View full record <span class="more-n">+6</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      <article class="card t-founders" data-tiers="founders" data-search="yves gege founder serial entrepreneur physical therapist 15+ years of experience with athletes and communities in the fitness and healthcare space co-founder of effective fitness training founder of made 2 move health and human performance partner in pt biz (educational company that has helped thousands of healthcare professionals) passionate about serving leo and similar communities with evidence-based programs ">
+
+        <div class="card-head">
+
+          <img class="avatar" src="https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/7a16ba56a963ccf9370081641fbaa10d.jpg" alt="Yves Gege, Founder, EF Combatives instructor" loading="lazy" decoding="async" width="56" height="56">
+
+          <div class="who">
+
+            <h3 class="name">Yves Gege</h3>
+
+            <p class="role">Founder</p>
+
+          </div>
+
+        </div>
+
+        <ul class="chips"></ul>
+
+        <ul class="creds"><li>Serial entrepreneur</li><li>Physical Therapist</li><li>15+ years of experience with athletes and communities in the fitness and healthcare space</li></ul>
+
+        <ul class="creds creds-rest" id="rest-yves-gege" hidden><li>Co-Founder of Effective Fitness Training</li><li>Founder of Made 2 Move Health and Human Performance</li><li>Partner in PT Biz (educational company that has helped thousands of healthcare professionals)</li><li>Passionate about serving LEO and similar communities with evidence-based programs</li></ul>
+
+        <button class="more" type="button" aria-expanded="false" aria-controls="rest-yves-gege">
+
+          <span class="more-open">View full record <span class="more-n">+4</span></span>
+
+          <span class="more-close">Show less</span>
+
+        </button>
+
+      </article>
+
+      </div>
+
+    </section>
 
       <div class="empty" id="efc-empty">
+
         <h2>No matches</h2>
+
         <p>No instructors match that search. Try a discipline like "SWAT" or "Jiu-Jitsu", or a state.</p>
+
         <button type="button" id="efc-clear">Clear search</button>
+
       </div>
+
     </div>
+
   </main>
 
+
+
   <button class="to-top" id="efc-top" type="button" aria-label="Back to top">
+
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg>
+
   </button>
+
+
+
 </div>
 
+
+
+<script type="application/ld+json">
+
+{
+
+  "@context": "https://schema.org",
+
+  "@graph": [
+
+    {
+
+      "@type": "Organization",
+
+      "name": "EF Combatives",
+
+      "url": "https://www.efcombatives.com/team",
+
+      "description": "Law enforcement combatives and defensive tactics training. The EFC instructor cadre brings over 250 years of combined experience in law enforcement, Jiu-Jitsu, and wrestling."
+
+    },
+
+    {
+
+      "@type": "ItemList",
+
+      "name": "EF Combatives Instructor Cadre",
+
+      "numberOfItems": 39,
+
+      "itemListElement": [
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 1,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Jay Wadsworth",
+
+            "jobTitle": "Director of Combatives · Head Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Brazilian Jiu-Jitsu – 3rd Degree Black Belt; Retired Pro/Amateur MMA fighter; 22 years of street cop experience; 14 years SWAT experience",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "MMA",
+
+              "Taser / Less-Lethal"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/59c691d94096989df5f715814e77e422.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 2,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Scott St. Clair",
+
+            "jobTitle": "Assistant Director · Head Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "13+ years of law enforcement experience; Brazilian Jiu-Jitsu Black Belt; 11+ years SWAT Team member; Regional SWAT Team Leader",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "Military"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/a2ab820fd3c90266ca7d0343ebd9ef0d.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 3,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Matt Greene",
+
+            "jobTitle": "Full-Time Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Effective Fitness Coach; NSCA Certified Strength and Conditioning Specialist; NSCA Tactical Strength and Conditioning Facilitator; US Army Holistic Health & Fitness Coordinator",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "MMA",
+
+              "Wrestling",
+
+              "Military"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/6853c51bdb5e55d870c05ed8e1466b75.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 4,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Dylan Royce",
+
+            "jobTitle": "Full-Time Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "B.S. in Exercise & Sports Science; 11+ years of law enforcement experience – active-duty police officer; Brazilian Jiu-Jitsu Black Belt – 2nd Degree; IBJJF No-Gi World Medalist (Black Belt)",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "MMA"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/d448dc49f5c04348d37237fb0e8e4e99.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 5,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Rob Hugus",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "28-year retired NY State Police; Mobile Response Team member; Expert Marksman – former member of .308 Marksman Unit (sniper); Firearms Instructor",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Defensive Tactics"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4090d963cf5dcd0386b2e37158007d2d.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 6,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Joe Indelicato",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "20-year veteran of New York State Police (retired); State Police Defensive Tactics Instructor for 12 years; Member-In-Charge of Defensive Tactics and Taser for Western Region, NYSP; Lead Mobile Field Unit (Riot Unit) Trainer for 10 years",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Defensive Tactics",
+
+              "MMA",
+
+              "Wrestling",
+
+              "Military",
+
+              "Taser / Less-Lethal",
+
+              "Muay Thai / Striking",
+
+              "Judo"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/469e1f6325531a3c5873780bbf03b5ba.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 7,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Henry Favor",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "22 years law enforcement experience across police and corrections; Master's degree in Criminal Justice Administration; Criminal Justice Professor at Monroe Community College; Instructor in multiple police disciplines including DT and Firearms (2005–present)",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Defensive Tactics"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4c04548ec9772b297c95fed79de42b0a.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 8,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Brendan McKeown",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Burnt Hills HS All-State honors (2008) in Folkstyle and Freestyle; East Stroudsburg University Wrestling (Div. II, PA); National Tournament qualifier 2012–2014; ranked as high as 4th in the country; All-American Honors, 6th at the NCAA Tournament (2013); D2 Super Region 1 finalist 2012–2014; champion 2013; Tournament Outstanding Wrestler (2013)",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Wrestling"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/9b3f1f178403014dd30c3d37814a8874.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 9,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Ryan Romig",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Police Sergeant with 15 years of law enforcement experience; Current SWAT Team Leader; Defensive Tactics Instructor; Army veteran",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Defensive Tactics",
+
+              "Military"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/844f071871ca8c2853d443887bb9938e.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 10,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Doug Braman",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Brazilian Jiu-Jitsu Black Belt; High school and collegiate wrestler; 17 years as Defensive Tactics Instructor; 20 years law enforcement experience",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Defensive Tactics",
+
+              "Wrestling",
+
+              "Taser / Less-Lethal"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/ecb448ef77012db018edcca2cbc4bb58.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 11,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Andrew Napieralski",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Current Assistant Team Leader, full-time SWAT Team; Police Sergeant with 15 years of law enforcement experience; 9 years SWAT experience; DCJS Defensive Tactics and Range Instructor",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Defensive Tactics"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/72b0adcf544986b0bbec8b5398e2941c.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 12,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Michael Peckham",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Current LEO Detective (10+ years); 20+ years US Air Force Security Forces; Current SFS SNCO; USAF Emergency Services Team",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "Military"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/ae4f7468f0e89a3564cdd3fa11cc37a0.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 13,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Josh Roth",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "NY State Trooper; K9 Handler, Defensive Tactics Instructor, Mobile Field Unit, Distinguished Pistol Expert; Owner & Head Instructor, Kinetix Combat Sports; Brazilian Jiu-Jitsu – 2nd Degree Black Belt, BJJ Revolution (Julio \"Foca\" Fernandez); BJJ Revolution Certified Brazilian Jiu-Jitsu Instructor",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "MMA",
+
+              "Military",
+
+              "Muay Thai / Striking"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/385bd5e01b49b3cb23d01414e4c36daf.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 14,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Cody Goodfriend",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Current law enforcement officer with 12+ years of experience; Brazilian Jiu-Jitsu Purple Belt; NYS-DCJS Master Defensive Tactics Instructor; Current SWAT team operator, 6+ years",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "MMA"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/1320f970b8cababd4280d1847b0a71d1.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 15,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Heath Beaudoin",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Brazilian Jiu-Jitsu Black Belt; Retired North Las Vegas Police Department Lieutenant; SWAT Tactical Team Leader (2014–2019); Crime Suppression Unit Sergeant (2012–2014)",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4ca2344f26808e61827ea6d0f42acbc9.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 16,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Mike Varley",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "12 years law enforcement experience; 8 years SWAT; DT Instructor since 2015; Brazilian Jiu-Jitsu Black Belt",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Defensive Tactics"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/d22a50e2d8980a3df794802097afda9f.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 17,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Chad Teets",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Detective Lieutenant, Washtenaw County Sheriff's Office (Michigan); Washtenaw Metro SWAT Team Commander; Detroit Jiu-Jitsu Black Belt; US Army Level 3 Combatives Certified",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Military"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/a405a0344783d6d1d29a7590025733ac.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 18,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Rick Rogers",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "US Marine Corps (2004–2008); Active Law Enforcement Officer (2009–Present); SWAT Operator; Firearms Instructor",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "Military"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/eb3085c1d447dc1d24b217c03e0de3df.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 19,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Dan Miller",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Brazilian Jiu-Jitsu Black Belt (2023); 9-year veteran of the Omaha Police Department; B.S. in Criminology and Criminal Justice (University of Nebraska Omaha); Owner / Head of Operations at The Best Jiu-Jitsu LLC",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "Military",
+
+              "Muay Thai / Striking"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/eaf2105ef4062edcadae7e8d22e6b061.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 20,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Jesse Tapsfield",
+
+            "jobTitle": "Lead Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Brazilian Jiu-Jitsu Black Belt; Owner of Taps Brazilian Jiu-Jitsu; 2-0 MMA record; 20 years in law enforcement",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "MMA",
+
+              "Taser / Less-Lethal",
+
+              "Krav Maga"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/29d1c84cf3b71b4dec8d950913a02b24.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 21,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Manny Vazquez",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "10th Planet Jiu-Jitsu Black Belt; Former Officer at Glenview Police Department; PTI Arrest & Control Tactics Instructor; Professional Mixed Martial Artist",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Defensive Tactics",
+
+              "MMA"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/f3008cd5cdadac3e788a99abf94a1d0f.jpeg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 22,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Jayde Sheeley",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Professional MMA fighter; 20+ years of martial arts experience; Current road patrol Deputy in Ohio with 5 years of experience; Brazilian Jiu-Jitsu Purple Belt",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Defensive Tactics",
+
+              "MMA",
+
+              "Wrestling"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4cf703c41dc135df1fefa33417a843d7.jpeg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 23,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Joseph Farina",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Patrol Sergeant with 17+ years of law enforcement experience; Brazilian Jiu-Jitsu Black Belt; 34+ years of martial arts experience across a variety of disciplines; Lead Defensive Tactics Instructor, Morris County Police Academy basic class",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Defensive Tactics",
+
+              "Taser / Less-Lethal",
+
+              "Krav Maga"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/a26b50488124662daeb9093667b05bca.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 24,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Daniel Riggi",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "8 years with New York State Police; Acting Technical Sergeant – Physical Training / Defensive Tactics; DCJS Certified Defensive Tactics Instructor; EFC Instructor",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Defensive Tactics",
+
+              "Wrestling",
+
+              "Taser / Less-Lethal"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/c891e63f66ca576d9b286e56073b30c5.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 25,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Steve Martell",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Police Officer – New Jersey (2009–Present); Field Training Officer; Physical Training Instructor; B.S. Criminal Justice",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Wrestling",
+
+              "Judo"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/b1aa560594352376e186d7b647960bf1.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 26,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Kristopher Schimek",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Jamestown NY Police since 2016; SWAT Team Operator since 2017; Three-time All-American Collegiate Wrestler; Junior College National Runner-Up",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "MMA",
+
+              "Wrestling",
+
+              "Muay Thai / Striking"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/95152d6034d543f01eb2cb79a7ee18c2.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 27,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Lana Toporek",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Brazilian Jiu-Jitsu Black Belt; Kajukenbo Black Belt; 16-year Police Officer; 14 years of patrol experience; TCOLE Master Peace Officer license",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Defensive Tactics",
+
+              "Taser / Less-Lethal"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/813c4c7ebad1a82ed9fe6ae39882eb06.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 28,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "David Johnson",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Patrol Deputy with 2 years of law enforcement experience; Brazilian Jiu-Jitsu Black Belt; Retired Army Combat Medic / Navy Corpsman – 22 years of service; Tactical Combat Casualty Care Instructor",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Military",
+
+              "Tactical Medicine"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/4245e3ca386bc9044602656dc6cfb910.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 29,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Anastasia Moore",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Current law enforcement officer with 8 years of patrol experience; 15 years experience in law enforcement; Former Intelligence Analyst, Texas Rangers Border Security Operations Center; Master's Degree in Criminal Intelligence",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/ce505d2b755d0a277426e0364f4a2593.jpg"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 30,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Frank Jordan",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "SC Law Enforcement (2007–present); Brazilian Jiu-Jitsu Black Belt – Alliance; Defensive Tactics Instructor; Ground Defense Instructor",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Defensive Tactics"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/f6fa4809ce10f4d074eb25ce978f07e2.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 31,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Don Wasser",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Active LEO with 19 years of experience; Current SWAT member of 9 years; NYS Certified Instructor of Firearms, Physical Training, and Defensive Tactics since 2009; NYS Master DT Instructor",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "Taser / Less-Lethal"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/55ba867595f044f98e054e694245d30a.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 32,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Jimmie Rivera",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "2 years as Police Officer, Elmwood Park PD, New Jersey; 3 years as a dispatcher, Elmwood Park PD, New Jersey; 25+ years as a martial artist; 16 years as a professional MMA fighter (23-5 record)",
+
+            "knowsAbout": [
+
+              "Defensive Tactics",
+
+              "MMA"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/5a30dc95d7b6e4a499ba067f934c2f00.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 33,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Will Holzapfel",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Nine years of LEO experience, starting as a Corrections Officer for the Florida DOC; Served as a Jail Deputy with the Charlotte County Sheriff's Office and Denver Sheriff's Department; BJJ Black Belt; Former owner and head instructor of Black Tie Brazilian Jiu-Jitsu, Centennial, CO",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/8b8ad8f529110bb5db15cc31506e8274.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 34,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Michael Foligno",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Current Chief of Police, Elmwood Park PD, New Jersey; 35 years law enforcement experience, 11 as Chief; 12 years MMA experience and training; Owner / Instructor of Tiger Schulmann's MMA, West Orange, NJ",
+
+            "knowsAbout": [
+
+              "SWAT / Tactical",
+
+              "Defensive Tactics",
+
+              "MMA",
+
+              "Wrestling"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/17bbdeccfdb688ce1ee96c53ee314c72.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 35,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Josh Cole",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "2nd Degree Brazilian Jiu-Jitsu Black Belt; Owner / Head Instructor at Marietta Combat Sports; Patrol Lieutenant with 13+ years of law enforcement; SWAT Team Leader with 10+ years on team",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "SWAT / Tactical",
+
+              "Firearms",
+
+              "Defensive Tactics",
+
+              "MMA",
+
+              "Wrestling",
+
+              "Taser / Less-Lethal"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/720e2a79af674f5351dac27a9c087600.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 36,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Dylan Freedman",
+
+            "jobTitle": "Support Instructor",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Collegiate wrestler; Retired MMA fighter; Active competitor in BJJ, Brown Belt; MMA / BJJ coach",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "MMA",
+
+              "Wrestling",
+
+              "Military"
+
+            ]
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 37,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Adam Haidary",
+
+            "jobTitle": "Founder",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Founder, Police Posts; Co-founder, Effective Fitness; 7 years of law enforcement experience (2013–2020); Former Training Supervisor – Rank: Sgt.",
+
+            "knowsAbout": [
+
+              "Brazilian Jiu-Jitsu",
+
+              "Tactical Medicine"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/ffd80a0586b70e3b99e2025ee7aa6e9e.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 38,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Dane Gifford",
+
+            "jobTitle": "Founder",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Co-founder and operator across EFC, EFT, and PolicePosts; USAF Veteran; B.S. Exercise Science; A.S. Allied Health – Physical Therapist Assistant",
+
+            "knowsAbout": [
+
+              "Military"
+
+            ],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/6e5c49fd4068dace55e75399c96159ac.png"
+
+          }
+
+        },
+
+        {
+
+          "@type": "ListItem",
+
+          "position": 39,
+
+          "item": {
+
+            "@type": "Person",
+
+            "name": "Yves Gege",
+
+            "jobTitle": "Founder",
+
+            "worksFor": {
+
+              "@type": "Organization",
+
+              "name": "EF Combatives"
+
+            },
+
+            "description": "Serial entrepreneur; Physical Therapist; 15+ years of experience with athletes and communities in the fitness and healthcare space; Co-Founder of Effective Fitness Training",
+
+            "knowsAbout": [],
+
+            "image": "https://lwfiles.mycourse.app/62a1fdf41e9e2fbf212d5def-public/7a16ba56a963ccf9370081641fbaa10d.jpg"
+
+          }
+
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+
+</script>
+
+
+
 <script>
+
 (function () {
+
   var root = document.querySelector('.efc-team');
-  if(!root) return;
+
   var cards = Array.prototype.slice.call(root.querySelectorAll('.card'));
+
   var groups = Array.prototype.slice.call(root.querySelectorAll('.tier-group'));
+
   var search = root.querySelector('#efc-search');
+
   var count = root.querySelector('#efc-count');
+
   var empty = root.querySelector('#efc-empty');
+
   var clearBtn = root.querySelector('#efc-clear');
+
   var toTop = root.querySelector('#efc-top');
+
   var total = cards.length;
 
+
+
   function apply() {
+
     var q = (search.value || '').trim().toLowerCase();
+
     var visible = 0;
+
     cards.forEach(function (c) {
+
       var show = !q || c.getAttribute('data-search').indexOf(q) !== -1;
+
       c.classList.toggle('is-hidden', !show);
+
       if (show) visible++;
+
     });
+
     groups.forEach(function (g) {
+
       var anyVisible = g.querySelectorAll('.card:not(.is-hidden)').length > 0;
+
       g.classList.toggle('is-hidden', !anyVisible);
+
     });
+
     empty.classList.toggle('show', visible === 0);
+
     if (!q) {
+
       count.textContent = total + ' instructors across the cadre';
+
     } else {
+
       count.textContent = visible + (visible === 1 ? ' instructor' : ' instructors') + ' matching "' + q + '"';
+
     }
+
   }
 
-  if (search) search.addEventListener('input', apply);
-  if (clearBtn) clearBtn.addEventListener('click', function () { search.value = ''; apply(); search.focus(); });
+
+
+  search.addEventListener('input', apply);
+
+  clearBtn.addEventListener('click', function () { search.value = ''; apply(); search.focus(); });
+
+
 
   root.querySelectorAll('.more').forEach(function (btn) {
+
     btn.addEventListener('click', function () {
+
       var target = root.querySelector('#' + btn.getAttribute('aria-controls'));
+
       var open = btn.getAttribute('aria-expanded') === 'true';
+
       btn.setAttribute('aria-expanded', String(!open));
+
       if (target) target.hidden = open;
+
     });
+
   });
 
+
+
   window.addEventListener('scroll', function () {
-    if(toTop) toTop.classList.toggle('show', window.scrollY > 700);
+
+    toTop.classList.toggle('show', window.scrollY > 700);
+
   }, { passive: true });
-  
-  if(toTop) {
-    toTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
+
+  toTop.addEventListener('click', function () {
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  });
+
+
 
   apply();
+
 })();
+
 </script>
+
+</body>
+
+</html> and url is /team.html 
+
